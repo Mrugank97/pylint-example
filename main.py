@@ -13,7 +13,6 @@ class Solution:
     This class contains the method `find_median_sorted_arrays` which
     takes in two sorted arrays and returns their median.
     """
-    
     def find_median_sorted_arrays(self, a, b):
         """
         Find the median of two sorted arrays.
