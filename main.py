@@ -1,86 +1,51 @@
-"""
-Module for finding the median of two sorted arrays.
+import math
 
-This module provides a solution to the problem of finding the median
-of two sorted arrays. The `find_median_sorted_arrays` method combines
-the arrays and finds the median value.
-"""
+def is_prime(number):
+    """Check if a number is prime."""
+    if number <= 1:
+        return False
+    for i in range(2, int(math.sqrt(number)) + 1):
+        if number % i == 0:
+            return False
+    return True
 
-class Solution:
-    """
-    Class to find the median of two sorted arrays.
+def generate_primes(limit):
+    """Generate a list of prime numbers up to a limit."""
+    primes = []
+    for num in range(2, limit + 1):
+        if is_prime(num):
+            primes.append(num)
+    return primes
 
-    This class contains the method `find_median_sorted_arrays` which
-    takes in two sorted arrays and returns their median.
-    """
-    def find_median_sorted_arrays(self, a, b):
-        """
-        Find the median of two sorted arrays.
+def factorial(number):
+    """Calculate the factorial of a number."""
+    if number < 0:
+        raise ValueError("Factorial is not defined for negative numbers.")
+    if number == 0 or number == 1:
+        return 1
+    return number * factorial(number - 1)
 
-        This method merges two sorted arrays and returns the median value.
-        
-        Parameters:
-        a (list): The first sorted array.
-        b (list): The second sorted array.
-        
-        Returns:
-        float: The median value of the two sorted arrays.
-        """
-        n1 = len(a)
-        n2 = len(b)
+def main():
+    """Main function to demonstrate functionality."""
+    print("Welcome to the Python utility program!")
 
-        n = n1 + n2
-        index_1 = n // 2 - 1
-        index_2 = n // 2
+    # Prime number generation
+    limit = 50
+    print(f"Generating prime numbers up to {limit}:")
+    primes = generate_primes(limit)
+    print(primes)
 
-        ele_1 = -1
-        ele_2 = -1
+    # Factorial calculation
+    number = 5
+    print(f"Calculating the factorial of {number}:")
+    fact = factorial(number)
+    print(f"The factorial of {number} is {fact}")
 
-        i = 0
-        j = 0
+    # Prime check
+    test_number = 29
+    print(f"Checking if {test_number} is a prime number:")
+    result = is_prime(test_number)
+    print(f"{test_number} is {'a prime' if result else 'not a prime'} number.")
 
-        count = 0
-
-        while i < n1 and j < n2:
-            if a[i] < b[j]:
-                if count == index_1:
-                    ele_1 = a[i]
-                if count == index_2:
-                    ele_2 = a[i]
-                count += 1
-                i += 1
-            else:
-                if count == index_1:
-                    ele_1 = b[j]
-                if count == index_2:
-                    ele_2 = b[j]
-                count += 1
-                j += 1
-
-        while i < n1:
-            if count == index_1:
-                ele_1 = a[i]
-            if count == index_2:
-                ele_2 = a[i]
-            count += 1
-            i += 1
-
-        while j < n2:
-            if count == index_1:
-                ele_1 = b[j]
-            if count == index_2:
-                ele_2 = b[j]
-            count += 1
-            j += 1
-
-        if n % 2 == 0:
-            return (ele_1 + ele_2) / 2.0
-
-        return float(ele_2)
-
-
-# Example usage
 if __name__ == "__main__":
-    solution = Solution()
-    result = solution.find_median_sorted_arrays([1, 3], [2])
-    print(result)
+    main()
