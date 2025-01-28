@@ -1,3 +1,8 @@
+"""
+This is a utility program to demonstrate prime number generation, 
+factorial calculation, and prime checking functionality.
+"""
+
 import math
 
 def is_prime(number):
@@ -21,7 +26,7 @@ def factorial(number):
     """Calculate the factorial of a number."""
     if number < 0:
         raise ValueError("Factorial is not defined for negative numbers.")
-    if number == 0 or number == 1:
+    if number in (0, 1):  # Updated condition
         return 1
     return number * factorial(number - 1)
 
