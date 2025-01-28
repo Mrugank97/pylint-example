@@ -1,5 +1,32 @@
+"""
+Module for finding the median of two sorted arrays.
+
+This module provides a solution to the problem of finding the median
+of two sorted arrays. The `find_median_sorted_arrays` method combines
+the arrays and finds the median value.
+"""
+
 class Solution:
-    def findMedianSortedArrays(self, a, b):
+    """
+    Class to find the median of two sorted arrays.
+
+    This class contains the method `find_median_sorted_arrays` which
+    takes in two sorted arrays and returns their median.
+    """
+    
+    def find_median_sorted_arrays(self, a, b):
+        """
+        Find the median of two sorted arrays.
+
+        This method merges two sorted arrays and returns the median value.
+        
+        Parameters:
+        a (list): The first sorted array.
+        b (list): The second sorted array.
+        
+        Returns:
+        float: The median value of the two sorted arrays.
+        """
         n1 = len(a)
         n2 = len(b)
 
@@ -52,8 +79,9 @@ class Solution:
 
         return float(ele_2)
 
-# Example Usage
+
+# Example usage
 if __name__ == "__main__":
     solution = Solution()
-    result = solution.findMedianSortedArrays([1, 3], [2])
+    result = solution.find_median_sorted_arrays([1, 3], [2])
     print(result)
