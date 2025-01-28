@@ -13,10 +13,6 @@ class Solution:
     This class contains the method `find_median_sorted_arrays` which
     takes in two sorted arrays and returns their median.
     """
-    
-    def __init__(self):
-        pass
-
     def find_median_sorted_arrays(self, a, b):
         """
         Find the median of two sorted arrays.
@@ -47,46 +43,40 @@ class Solution:
 
         while i < n1 and j < n2:
             if a[i] < b[j]:
-                ele_1, ele_2, count = self.update_elements(ele_1, ele_2, count, index_1, index_2, a[i])
+                if count == index_1:
+                    ele_1 = a[i]
+                if count == index_2:
+                    ele_2 = a[i]
+                count += 1
                 i += 1
             else:
-                ele_1, ele_2, count = self.update_elements(ele_1, ele_2, count, index_1, index_2, b[j])
+                if count == index_1:
+                    ele_1 = b[j]
+                if count == index_2:
+                    ele_2 = b[j]
+                count += 1
                 j += 1
 
         while i < n1:
-            ele_1, ele_2, count = self.update_elements(ele_1, ele_2, count, index_1, index_2, a[i])
+            if count == index_1:
+                ele_1 = a[i]
+            if count == index_2:
+                ele_2 = a[i]
+            count += 1
             i += 1
 
         while j < n2:
-            ele_1, ele_2, count = self.update_elements(ele_1, ele_2, count, index_1, index_2, b[j])
+            if count == index_1:
+                ele_1 = b[j]
+            if count == index_2:
+                ele_2 = b[j]
+            count += 1
             j += 1
 
         if n % 2 == 0:
             return (ele_1 + ele_2) / 2.0
 
         return float(ele_2)
-
-    def update_elements(self, ele_1, ele_2, count, index_1, index_2, val):
-        """
-        Helper method to update the elements based on count.
-        
-        Parameters:
-        ele_1 (int): Previous first element.
-        ele_2 (int): Previous second element.
-        count (int): Current count.
-        index_1 (int): Index of the first element.
-        index_2 (int): Index of the second element.
-        val (int): The value to be considered.
-        
-        Returns:
-        tuple: Updated values of ele_1, ele_2, and count.
-        """
-        if count == index_1:
-            ele_1 = val
-        if count == index_2:
-            ele_2 = val
-        count += 1
-        return ele_1, ele_2, count
 
 
 # Example usage
